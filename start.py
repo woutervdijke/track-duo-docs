@@ -11,4 +11,6 @@ conn.request("GET", "/documenten?trefwoord=duo&startdatum=&einddatum=&onderdeel=
 res = conn.getresponse()
 data = res.read()
 
-print(data.decode("utf-8"))
+result = data.decode("utf-8")
+import re
+print(re.search('<ol class="common results">.*<\/ol>', result, re.DOTALL).group(0))
